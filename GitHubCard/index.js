@@ -1,16 +1,68 @@
+import axios from "axios"
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
 
+const gitId = axios.get('https://api.github.com/users/GradyB-Lambda')
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
     data in order to use it to build your component function
+*/
 
+
+
+
+/*
     Skip to STEP 3.
 */
+
+function githubCard(gitInfo) {
+  //find .cards and then Create the Elements
+  const cards = document.querySelector('.cards');
+  
+  const card = document.createElement('div');
+  const img = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const userHeading = document.createElement('h3');
+  const username = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p')
+  const address = document.createElement('a');
+  const followers = document.createElement('p');
+  const followersListElement = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p'); 
+
+//Add class list
+card.classList.add('card');
+cardInfo.classList.add('card-info');
+userHeading.classList.add('name');
+username.classList.add('username');
+
+//Attach all elements to cards and make sure h3 and p elements are nested in card info
+cards.appendChild(card);
+card.appendChild(img);
+card.appendChild(cardInfo);
+cardInfo.appendChild(userHeading);
+cardInfo.appendChild(username);
+cardInfo.appendChild(location);
+cardInfo.appendChild(profile);
+profile.appendChild(address);
+cardInfo.appendChild(followers);
+cardInfo.appendChild(followersListElement);
+cardInfo.appendChild(bio);
+
+//Populate the user card with promise result
+
+
+
+
+}
 
 /*
   STEP 4: Pass the data received from Github into your function,
@@ -28,7 +80,7 @@
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followers= [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
