@@ -58,11 +58,36 @@ cardInfo.appendChild(followersListElement);
 cardInfo.appendChild(bio);
 
 //Populate the user card with promise result
-
-
-
-
+gitInfo
+  .then((response) => {
+    img.src = response.data.avatar_url;
+    userHeading.textContent = response.data.name;
+    username.textContent = `Username: ${response.data.login}`;
+    location.textContent = `Location: ${response.data.location}`;
+    profile.textContent = `Profile: ${response.data.html_url}`;
+    followers.textContent = `Followers: ${response.data.followers}`;
+    following.textContent = `Following: ${response.data.following}`;
+    bio.textContent = `Bio: ${response.data.bio}`
+  });
 }
+
+githubCard(gitId)
+
+//List of followers
+const followers = [
+  'tetondan',
+  'dustinmyers',
+  'justsml',
+  'luishrd',
+  'bigkell'
+];
+
+//Get followers and iterate and add create new card
+followers.forEach((follower) => {
+  const gitData = axios.get(`https://api.github.com/users/${follower}`);
+  githubCard(gitData)
+});
+
 
 /*
   STEP 4: Pass the data received from Github into your function,
@@ -80,7 +105,7 @@ cardInfo.appendChild(bio);
     user, and adding that card to the DOM.
 */
 
-const followers= [];
+// const followers= [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
